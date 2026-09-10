@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Light / paper palette */
+  --color-ivory: #fff9f5;
+  --color-cream: #f7eee7;
+  --color-blush: #f2d5d2;
+  --color-dusty: #c98587;
+  --color-rose: #a95c68;
+  --color-burgundy: #6b303a;
+  --color-plum: #3d2630;
+  --color-ink: #282124;
+  --color-muted: #75666a;
+
+  /* Night palette */
+  --color-midnight: #171528;
+  --color-plumnight: #282039;
+  --color-nightrose: #b47b88;
+  --color-mooncream: #fff3e4;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+
+  --shadow-polaroid: 0 10px 30px -10px rgb(61 38 48 / 0.25);
+  --shadow-soft: 0 20px 60px -20px rgb(107 48 58 / 0.18);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 12s ease-in-out infinite;
+  --animate-twinkle: twinkle 3.5s ease-in-out infinite;
+  --animate-drift: drift 26s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--float-rot, 0deg)); }
+  50% { transform: translateY(-14px) rotate(var(--float-rot, 0deg)); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+@keyframes drift {
+  from { transform: translateY(0) translateX(0); }
+  to { transform: translateY(-105vh) translateX(4vw); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
+
+::selection {
+  background: var(--color-blush);
+  color: var(--color-burgundy);
+}
+
+/* ---------- Shared utility classes ---------- */
+.container-page {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-page { padding-inline: 2.5rem; }
+}
+
+.paper-texture {
+  background-color: var(--color-ivory);
+  background-image:
+    radial-gradient(rgb(107 48 58 / 0.035) 1px, transparent 1px),
+    radial-gradient(rgb(107 48 58 / 0.025) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.night-texture {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgb(180 123 136 / 0.22), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgb(201 133 135 / 0.12), transparent 55%),
+    linear-gradient(175deg, #1d1a33 0%, #171528 55%, #241d38 100%);
+}
+
+.hand-underline {
+  background-image: linear-gradient(transparent 62%, rgb(242 213 210 / 0.9) 62%);
+}
+
+.polaroid {
+  background: #fff;
+  padding: 0.75rem 0.75rem 3.25rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow-polaroid);
+}
+
+/* Scroll reveal (IntersectionObserver adds .is-visible).
+   Content is only hidden when JS confirms the observer is running
+   (html.js-reveal) — if JS ever fails, everything stays visible. */
+html.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
