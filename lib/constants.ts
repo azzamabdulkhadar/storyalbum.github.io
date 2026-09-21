@@ -15,4 +15,5 @@ export const NAV_MORE_LINKS = [
   { href: "/why-special", label: "Why She Is Special" },
   { href: "/people", label: "People In Her Story" },
   { href: "/story", label: "Full Story" },
+  { href: "/birthday", label: "Happy Birthday ♡" },
 ] as const;

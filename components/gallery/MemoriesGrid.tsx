@@ -71,7 +71,7 @@ export default function MemoriesGrid({
         </div>
       )}
 
-      <div className="columns-2 gap-4 md:columns-3 xl:columns-4 [&>*]:mb-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
         <AnimatePresence mode="popLayout">
           {filtered.map((m, i) => (
             <motion.button
@@ -90,8 +90,11 @@ export default function MemoriesGrid({
             >
               <div className="overflow-hidden rounded-xl shadow-[var(--shadow-polaroid)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[0.5deg]">
                 <GradientPhoto
+                  src={m.src}
+                  alt={m.title}
                   preset={m.preset}
-                  className={`w-full ${m.tall ? "aspect-[3/4]" : "aspect-square"} transition-transform duration-700 group-hover:scale-105`}
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="w-full aspect-square transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="mt-2.5 px-1">
@@ -124,7 +127,7 @@ export default function MemoriesGrid({
               className="relative w-full max-w-3xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <GradientPhoto preset={current.preset} className="aspect-[16/10] w-full rounded-2xl" rounded="rounded-2xl" />
+              <GradientPhoto src={current.src} alt={current.title} preset={current.preset} className="aspect-[16/10] w-full rounded-2xl" rounded="rounded-2xl" />
               <figcaption className="mx-auto mt-5 max-w-xl text-center">
                 <p className="font-display text-2xl font-semibold text-mooncream">{current.title}</p>
                 <p className="mt-1 text-xs uppercase tracking-[0.2em] text-nightrose">

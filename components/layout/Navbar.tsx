@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Heart, Menu, Search, X } from "lucide-react";
+import { ChevronDown, Heart, Menu, X } from "lucide-react";
 import { NAV_LINKS, NAV_MORE_LINKS } from "@/lib/constants";
-import AccountButton from "@/components/layout/AccountButton";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -129,14 +128,6 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-1.5">
-            <AccountButton />
-            <Link
-              href="/shayari"
-              aria-label="Search quotes"
-              className="rounded-full p-2 text-burgundy/70 transition-colors hover:bg-blush/40 hover:text-burgundy"
-            >
-              <Search className="size-[18px]" />
-            </Link>
             <Link
               href="/why-special"
               aria-label="Why she is special"

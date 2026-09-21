@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronDown, Heart } from "lucide-react";
@@ -45,16 +46,28 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden">
-      {/* painted sunset sky */}
+      {/* her photo, softly blended under a painted dusk */}
       <div
         aria-hidden
         className="absolute inset-0 scale-110"
-        style={{
-          transform: `translateY(${offset * 0.25}px) scale(1.12)`,
-          background:
-            "linear-gradient(180deg,#231a38 0%,#4a2a4e 26%,#8a4a63 46%,#c76f74 62%,#e8a08a 78%,#f3c9a5 92%,#3a2136 100%)",
-        }}
-      />
+        style={{ transform: `translateY(${offset * 0.25}px) scale(1.12)` }}
+      >
+        <Image
+          src="/images/home-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg,rgba(35,26,56,0.75) 0%,rgba(74,42,78,0.55) 30%,rgba(138,74,99,0.42) 50%,rgba(243,201,165,0.30) 78%,rgba(58,33,54,0.88) 100%)",
+          }}
+        />
+      </div>
       {/* glow */}
       <div
         aria-hidden

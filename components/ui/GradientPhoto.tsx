@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 /**
- * Gradient "photo" placeholder. Until real photographs are uploaded
- * (Supabase Storage phase), every image slot renders one of these
- * atmospheric gradient artworks so the layout looks intentional.
+ * Photo slot: renders a real photograph when `src` is given, and falls
+ * back to an atmospheric gradient artwork otherwise so the layout always
+ * looks intentional.
  */
-const PRESETS: Record<string, { bg: string; icon?: string }> = {
+const PRESETS: Record<string, { bg: string }> = {
   sunset: {
     bg: "linear-gradient(180deg,#2a1f3d 0%,#5a3050 34%,#a95c68 62%,#e0988e 84%,#f5c9a8 100%)",
   },
@@ -25,17 +27,25 @@ const PRESETS: Record<string, { bg: string; icon?: string }> = {
 };
 
 export default function GradientPhoto({
+  src,
+  alt = "",
   preset = "sunset",
   label,
   caption,
   className = "",
   rounded = "rounded-lg",
+  sizes = "(max-width: 768px) 100vw, 50vw",
+  priority = false,
 }: {
+  src?: string;
+  alt?: string;
   preset?: keyof typeof PRESETS;
   label?: string;
   caption?: string;
   className?: string;
   rounded?: string;
+  sizes?: string;
+  priority?: boolean;
 }) {
   const p = PRESETS[preset] ?? PRESETS.sunset;
   return (
@@ -43,24 +53,38 @@ export default function GradientPhoto({
       className={`relative overflow-hidden ${rounded} ${className}`}
       style={{ background: p.bg }}
     >
-      {/* soft sun / moon glow */}
-      <span
-        aria-hidden
-        className="absolute rounded-full bg-white/25 blur-2xl"
-        style={{ width: "45%", aspectRatio: "1", left: "58%", top: "12%" }}
-      />
-      {/* silhouette hill */}
-      <svg
-        aria-hidden
-        viewBox="0 0 100 40"
-        preserveAspectRatio="none"
-        className="absolute inset-x-0 bottom-0 h-[42%] w-full text-ink/45"
-      >
-        <path
-          d="M0 40 L0 26 Q18 14 34 22 Q50 30 66 16 Q84 4 100 18 L100 40 Z"
-          fill="currentColor"
+      {src ? (
+        <Image
+          src={src}
+          alt={alt || label || caption || "photo"}
+          fill
+          sizes={sizes}
+          priority={priority}
+          draggable={false}
+          className="object-cover"
         />
-      </svg>
+      ) : (
+        <>
+          {/* soft sun / moon glow */}
+          <span
+            aria-hidden
+            className="absolute rounded-full bg-white/25 blur-2xl"
+            style={{ width: "45%", aspectRatio: "1", left: "58%", top: "12%" }}
+          />
+          {/* silhouette hill */}
+          <svg
+            aria-hidden
+            viewBox="0 0 100 40"
+            preserveAspectRatio="none"
+            className="absolute inset-x-0 bottom-0 h-[42%] w-full text-ink/45"
+          >
+            <path
+              d="M0 40 L0 26 Q18 14 34 22 Q50 30 66 16 Q84 4 100 18 L100 40 Z"
+              fill="currentColor"
+            />
+          </svg>
+        </>
+      )}
       {label && (
         <figcaption className="absolute left-3 top-3 rounded-full bg-black/25 px-3 py-1 text-[11px] font-medium tracking-wide text-white/90 backdrop-blur-sm">
           {label}

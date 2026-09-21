@@ -1,6 +1,5 @@
 /**
- * Static content pack (Version 1). Later each export maps 1:1 to a
- * Supabase table — see the plan's database schema.
+ * Static content pack (Version 1), served as a static data file.
  */
 
 export const profile = {
@@ -28,15 +27,16 @@ export type Chapter = {
   title: string;
   text: string;
   preset: string;
+  src?: string;
 };
 
 export const chapters: Chapter[] = [
-  { year: "2004", title: "The Beginning", text: "She came into this world with a heart full of love and endless possibilities.", preset: "dawn" },
-  { year: "2010", title: "Childhood", text: "Tiny hands, big dreams.", preset: "meadow" },
-  { year: "2015", title: "Growing Up", text: "School, friends & countless memories.", preset: "bloom" },
-  { year: "2019", title: "Teenage Years", text: "New dreams. New people. New emotions.", preset: "sunset" },
-  { year: "2023", title: "A New Chapter", text: "Life started changing.", preset: "sea" },
-  { year: "2025", title: "Present", text: "The girl she has become.", preset: "night" },
+  { year: "2004", title: "The Beginning", text: "She came into this world with a heart full of love and endless possibilities.", preset: "dawn", src: "/images/pic4.jpg" },
+  { year: "2010", title: "Childhood", text: "Tiny hands, big dreams.", preset: "meadow", src: "/images/pic13.jpg" },
+  { year: "2015", title: "Growing Up", text: "School, friends & countless memories.", preset: "bloom", src: "/images/pic2.jpg" },
+  { year: "2019", title: "Teenage Years", text: "New dreams. New people. New emotions.", preset: "sunset", src: "/images/pic11.jpg" },
+  { year: "2023", title: "A New Chapter", text: "Life started changing.", preset: "sea", src: "/images/pic12.jpg" },
+  { year: "2026", title: "Present", text: "The girl she has become.", preset: "night", src: "/images/home-2.jpg" },
 ];
 
 export type Memory = {
@@ -46,6 +46,7 @@ export type Memory = {
   note: string;
   category: string;
   preset: string;
+  src?: string;
   tall?: boolean;
 };
 
@@ -54,50 +55,82 @@ export const memoryCategories = [
 ];
 
 export const memories: Memory[] = [
-  { id: "m1", title: "Golden hour with her", date: "12 Sep 2024", note: "A completely ordinary day that somehow became a beautiful memory.", category: "Friends", preset: "sunset" },
-  { id: "m2", title: "Under the stars", date: "04 Jan 2025", note: "Counting stars and losing count.", category: "Trips", preset: "night", tall: true },
-  { id: "m3", title: "Chai & conversations", date: "21 Nov 2024", note: "Where every problem felt smaller.", category: "Family", preset: "dawn" },
-  { id: "m4", title: "The birthday cake", date: "05 Nov 2024", note: "She wished. We pretended not to watch.", category: "Birthdays", preset: "bloom" },
-  { id: "m5", title: "School corridor laughs", date: "14 Feb 2019", note: "Laughing too loud in a quiet corridor.", category: "School", preset: "meadow" },
-  { id: "m6", title: "First trip together", date: "02 Jun 2023", note: "Where the map ended, the fun began.", category: "Trips", preset: "sea" },
-  { id: "m7", title: "Tiny dancer", date: "2009", note: "Twirling in the rain without a care.", category: "Childhood", preset: "dawn" },
-  { id: "m8", title: "College fest nights", date: "18 Mar 2024", note: "Music, lights and zero worries.", category: "College", preset: "night" },
-  { id: "m9", title: "Random Tuesday", date: "27 Aug 2025", note: "No reason to remember it. Remembering it anyway.", category: "Random", preset: "bloom" },
+  { id: "m1", title: "Golden hour with her", date: "12 Sep 2024", note: "A completely ordinary day that somehow became a beautiful memory.", category: "Friends", preset: "sunset", src: "/images/pic2.jpg" },
+  { id: "m2", title: "Under the stars", date: "04 Jan 2025", note: "Counting stars and losing count.", category: "Trips", preset: "night", tall: true, src: "/images/pic3.jpg" },
+  { id: "m3", title: "Chai & conversations", date: "21 Nov 2024", note: "Where every problem felt smaller.", category: "Family", preset: "dawn", src: "/images/pic4.jpg" },
+  { id: "m4", title: "The birthday cake", date: "05 Nov 2024", note: "She wished. We pretended not to watch.", category: "Birthdays", preset: "bloom", src: "/images/pic5.jpg" },
+  { id: "m5", title: "School corridor laughs", date: "14 Feb 2019", note: "Laughing too loud in a quiet corridor.", category: "School", preset: "meadow", src: "/images/pic6.jpg" },
+  { id: "m6", title: "First trip together", date: "02 Jun 2023", note: "Where the map ended, the fun began.", category: "Trips", preset: "sea", src: "/images/pic7.jpg" },
+  { id: "m7", title: "Tiny dancer", date: "2009", note: "Twirling in the rain without a care.", category: "Childhood", preset: "dawn", tall: true, src: "/images/pic8.jpg" },
+  { id: "m8", title: "College fest nights", date: "18 Mar 2024", note: "Music, lights and zero worries.", category: "College", preset: "night", src: "/images/pic9.jpg" },
+  { id: "m9", title: "Random Tuesday", date: "27 Aug 2025", note: "No reason to remember it. Remembering it anyway.", category: "Random", preset: "bloom", src: "/images/pic10.jpg" },
+  { id: "m10", title: "That one evening", date: "19 Jul 2024", note: "The sky put on a show just for her.", category: "Friends", preset: "sunset", src: "/images/pic11.jpg" },
+  { id: "m11", title: "Classroom doodles", date: "03 Dec 2018", note: "Half notes, half drawings, full memories.", category: "School", preset: "meadow", src: "/images/pic12.jpg" },
+  { id: "m12", title: "Cousins' chaos", date: "15 Aug 2015", note: "Loud house, louder laughter.", category: "Family", preset: "bloom", src: "/images/pic13.jpg" },
+  { id: "m13", title: "Wanderlust weekend", date: "11 Oct 2024", note: "Wrong turns, right memories.", category: "Trips", preset: "sea", tall: true, src: "/images/pic14.jpg" },
+  { id: "m14", title: "Candles & wishes", date: "05 Nov 2023", note: "Another year softer, brighter, braver.", category: "Birthdays", preset: "dawn", src: "/images/pic15.jpg" },
+  { id: "m15", title: "Campus sunsets", date: "22 Feb 2024", note: "Lectures ended, conversations didn't.", category: "College", preset: "night", src: "/images/pic16.jpg" },
+  { id: "m16", title: "Monsoon puddles", date: "2011", note: "Small shoes, giant splashes.", category: "Childhood", preset: "meadow", src: "/images/pic17.jpg" },
 ];
 
 export type Quote = { id: string; text: string; category: string; language: string };
 
-export const shayariCategories = ["All", "Emotional", "Love", "Cute", "Sad", "Deep", "Her"];
+export const shayariCategories = ["All", "Romantic", "Deep", "Love", "Emotional", "Her", "Sad"];
 
 export const shayari: Quote[] = [
-  { id: "q1", text: "Uski muskurahat mein kuch toh baat hai,\nwarna yun hi koi dil ke itne paas nahi aata.", category: "Love", language: "hinglish" },
-  { id: "q2", text: "Kuch log yaadon mein nahi,\ndil ke kisi khoobsurat kone mein rehte hain.", category: "Emotional", language: "hinglish" },
-  { id: "q3", text: "Woh saamne ho toh lafz kam pad jaate hain,\naur door ho toh khayal zyada aa jaate hain.", category: "Deep", language: "hinglish" },
-  { id: "q4", text: "Uski ek muskurahat kaafi hai,\nek ordinary din ko yaadgaar banane ke liye.", category: "Cute", language: "hinglish" },
-  { id: "q5", text: "Chaand ko dekha tha raat bhar,\nphir yaad aaya... usse zyada khoobsurat toh koi aur hai.", category: "Her", language: "hinglish" },
-  { id: "q6", text: "Kuch rishte khamoshi se bhi gehre hote hain,\nbin kahe sab kuch samajh jaana bhi ek ibaadat hai.", category: "Emotional", language: "hindi" },
-  { id: "q7", text: "Woh jab door jaati hai toh lagta hai,\nkoi apna hissa saath le jaata hai.", category: "Sad", language: "hinglish" },
-  { id: "q8", text: "Dil ne har baar usi ko chuna,\njab bhi usne dekha, galti se bhi sahi.", category: "Love", language: "hinglish" },
+  { id: "q1", text: "Kahein tum chand ho, ya meri duaon ka jawab,\nHar dafa tumhe dekhoon, dil kahe bas tum hi lajawab.", category: "Romantic", language: "hinglish" },
+  { id: "q2", text: "Teri muskurahat ne ajeeb sa jaadu kar diya,\nJo dil kabhi kisi ka na hua, woh tera ho gaya.", category: "Romantic", language: "hinglish" },
+  { id: "q3", text: "Tum se milna sirf ek mulaqat nahi,\nLagta hai jaise meri adhuri kahani ka aakhri safha mil gaya.", category: "Romantic", language: "hinglish" },
+  { id: "q4", text: "Kahein wo raat jaisa manzar tha, Ya teri aankhon ka asar tha,\nJo bhi tha... Us lamhe mein sirf tera hi zikr tha.", category: "Romantic", language: "hinglish" },
+  { id: "q5", text: "Har dua mein tera naam chupaya hai,\nLog kehte hain mohabbat chhup nahi sakti,\nMaine muskura kar sirf tera khayal bataya hai.", category: "Love", language: "hinglish" },
+  { id: "q6", text: "Teri baatein chai ki pehli sip jaisi hain,\nHar roz chahiye... Aur kabhi kam nahi hoti.", category: "Love", language: "hinglish" },
+  { id: "q7", text: "Tumhare baad kisi aur ko dekha hi nahi,\nNa isliye ke koi khoobsurat nahi tha,\nBas meri nazar wafadar thi.", category: "Love", language: "hinglish" },
+  { id: "q8", text: "Mohabbat ka hisaab nahi hota,\nBas ek naam hota hai... Aur mere liye woh tum ho.", category: "Love", language: "hinglish" },
+  { id: "q9", text: "Uski muskurahat mein kuch toh baat hai,\nwarna yun hi koi dil ke itne paas nahi aata.", category: "Her", language: "hinglish" },
+  { id: "q10", text: "Kuch rishte khamoshi se bhi gehre hote hain,\nbin kahe sab kuch samajh jaana bhi ek ibaadat hai.", category: "Emotional", language: "hinglish" },
+  { id: "q11", text: "Chaand ko dekha tha raat bhar,\nphir yaad aaya... usse zyada khoobsurat toh koi aur hai.", category: "Her", language: "hinglish" },
+  { id: "q12", text: "Woh jab door jaati hai toh lagta hai,\nkoi apna hissa saath le jaata hai.", category: "Sad", language: "hinglish" },
+  { id: "q13", text: "Kuch log yaadon mein nahi,\ndil ke kisi khoobsurat kone mein rehte hain.", category: "Emotional", language: "hinglish" },
+  { id: "q14", text: "Uski ek muskurahat kaafi hai,\nek ordinary din ko yaadgaar banane ke liye.", category: "Her", language: "hinglish" },
+  { id: "q15", text: "Woh saamne ho toh lafz kam pad jaate hain,\naur door ho toh khayal zyada aa jaate hain.", category: "Deep", language: "hinglish" },
+  { id: "q16", text: "Ajeeb si aadat ho tum,\nDoor bhi raho... Toh bhi sabse kareeb lagte ho.", category: "Deep", language: "hinglish" },
+  { id: "q17", text: "Raat bhar chand se baatein ki,\nUsne poocha kis ki yaad hai?\nMaine muskura kar sirf tumhara naam liya.", category: "Deep", language: "hinglish" },
+  { id: "q18", text: "Na chaand chahiye, Na sitare chahiye,\nBas ek tum ho... Aur woh bhi hamesha ke liye.", category: "Romantic", language: "hinglish" },
+  { id: "q19", text: "Tumhari aankhon mein jo sukoon dekha,\nUske baad duniya ki har jagah bechain si lagi.", category: "Deep", language: "hinglish" },
+  { id: "q20", text: "Kaash waqt bhi tumhari tarah hota,\nJitna guzarta... Utna hi khoobsurat lagta.", category: "Emotional", language: "hinglish" },
 ];
 
 export type Line = { id: string; text: string; category: string };
 
-export const lineCategories = ["All", "Cute", "Romantic", "Playful", "Flirty", "Compliments", "Good Morning", "Good Night"];
+export const lineCategories = ["All", "Flirty", "Romantic", "Cute", "Compliments"];
 
 export const lines: Line[] = [
-  { id: "l1", text: "Are you always this cute, or do you save it for special occasions? 🙈", category: "Flirty" },
-  { id: "l2", text: "I was going to write something beautiful about you... then I realized you already are.", category: "Romantic" },
-  { id: "l3", text: "You're becoming a little difficult to forget.", category: "Flirty" },
-  { id: "l4", text: "If being cute was a crime, you'd be guilty.", category: "Playful" },
-  { id: "l5", text: "You make everything better.", category: "Compliments" },
-  { id: "l6", text: "I think my favorite notification might be your name.", category: "Cute" },
-  { id: "l7", text: "I had a clever opening line, but then you smiled and I forgot it.", category: "Playful" },
-  { id: "l8", text: "Good morning to the girl who somehow makes an ordinary morning feel a little prettier.", category: "Good Morning" },
-  { id: "l9", text: "Good night. May your dreams be as beautiful as the smile you leave behind.", category: "Good Night" },
-  { id: "l10", text: "Tumhari smile ka koi shortcut hai kya? Har baar mood theek kar deti hai.", category: "Cute" },
-  { id: "l11", text: "Tumhari aadat thodi dangerous hai... ek baar baat karo toh phir aur baat karne ka mann karta hai.", category: "Flirty" },
-  { id: "l12", text: "Tum ordinary moments ko bhi thoda sa special bana deti ho.", category: "Compliments" },
-  { id: "l13", text: "If being adorable was a competition, I'd stop competing and just cheer for you.", category: "Playful" },
+  { id: "l1", text: "Tum Google ho kya? Kyunki jo dhoondta hoon, woh tum mein mil jaata hai.", category: "Flirty" },
+  { id: "l2", text: "Itni khoobsurat hona legal hai ya permission leni padti hai?", category: "Flirty" },
+  { id: "l3", text: "Warning: Tumhari smile addictive hai.", category: "Flirty" },
+  { id: "l4", text: "Tumhare saath time fast nahi hota... bas yaadgar ho jaata hai.", category: "Flirty" },
+  { id: "l5", text: "Tumse baat karna meri favourite hobby ban chuki hai.", category: "Flirty" },
+  { id: "l6", text: "Agar beauty ka koi syllabus hota, tum uska complete textbook hoti.", category: "Compliments" },
+  { id: "l7", text: "Dil ne bola \"Ignore kar,\" aankhon ne bola \"Impossible.\"", category: "Flirty" },
+  { id: "l8", text: "Ek baat bataun? Tum real life filter lagti ho.", category: "Compliments" },
+  { id: "l9", text: "Tumhari DP dekh kar Wi-Fi bhi full signal de deta hai.", category: "Cute" },
+  { id: "l10", text: "Main shayad poet nahi... lekin tumhe dekh kar har lafz shayari ban jaata hai.", category: "Romantic" },
+  { id: "l11", text: "Kuch log zindagi mein aate nahi... bas dil mein utar jaate hain.", category: "Romantic" },
+  { id: "l12", text: "Tumhari hasi meri favourite notification hai.", category: "Cute" },
+  { id: "l13", text: "Agar sukoon ka koi chehra hota, toh shayad tumhara hota.", category: "Compliments" },
+  { id: "l14", text: "Tum mere din ki sabse khoobsurat wajah ho.", category: "Romantic" },
+  { id: "l15", text: "Har kahani mein hero zaroori nahi hota... kabhi kabhi ek muskurahat hi kaafi hoti hai.", category: "Romantic" },
+  { id: "l16", text: "Dil ko ghar mil gaya jab se tum mile.", category: "Romantic" },
+  { id: "l17", text: "Tum sirf pasand nahi... aadat ban gaye ho.", category: "Romantic" },
+  { id: "l18", text: "Tumhari khamoshi bhi bohot kuch keh jaati hai.", category: "Cute" },
+  { id: "l19", text: "Tum meri favourite \"what if\" nahi... meri favourite \"finally\" ho.", category: "Romantic" },
+  { id: "l20", text: "Kuch log milte hain... aur phir ghar jaisa sukoon de jaate hain.", category: "Compliments" },
+  { id: "l21", text: "Mohabbat awaaz nahi karti... bas dil mein reh jaati hai.", category: "Romantic" },
+  { id: "l22", text: "Agar lafzon ki rooh hoti, toh woh tumhara naam leti.", category: "Romantic" },
+  { id: "l23", text: "Dil ki sabse khoobsurat jagah par tum rehte ho.", category: "Compliments" },
+  { id: "l24", text: "Tumhari yaad bhi tumhari tarah khoobsurat hai.", category: "Compliments" },
+  { id: "l25", text: "Har baar tumhe dekh kar lagta hai... duniya itni buri bhi nahi.", category: "Cute" },
+  { id: "l26", text: "Tum meri dua ka woh hissa ho jo kabhi alfaaz nahi ban saka.", category: "Romantic" },
 ];
 
 export const thenNowPairs = [
@@ -111,60 +144,49 @@ export const thenNowChips = [
   "Old Photos → New Photos",
 ];
 
-export type Song = { id: string; title: string; artist: string; reason: string; duration: string; preset: string };
+export type Song = {
+  id: string;
+  title: string;
+  artist: string;
+  reason: string;
+  duration: string;
+  preset: string;
+  audio: string;
+};
 
 export const songTabs = ["Around Her", "Reminds Me of Her", "Your Song", "Late Night Songs", "Childhood Songs"];
 
 export const songs: Song[] = [
-  { id: "s1", title: "Perfect", artist: "Ed Sheeran", reason: "Because she's perfect, just the way she is.", duration: "4:23", preset: "dawn" },
-  { id: "s2", title: "Raataan Lambiyan", artist: "Jubin Nautiyal, Asees Kaur", reason: "Reminds me of her soft heart.", duration: "4:41", preset: "night" },
-  { id: "s3", title: "Let Her Go", artist: "Passenger", reason: "Because she deserves to be happy.", duration: "4:12", preset: "sea" },
-  { id: "s4", title: "Apna Bana Le", artist: "Arijit Singh", reason: "Because she feels like home.", duration: "4:22", preset: "bloom" },
-  { id: "s5", title: "Tum Hi Kaho", artist: "Abhi Dutt", reason: "Because there's no one like her.", duration: "4:45", preset: "meadow" },
+  { id: "s1", title: "Aaj Phir", artist: "Arijit Singh", reason: "Because every heartbeat hums her name.", duration: "4:37", preset: "sunset", audio: "/songs/song1.mp3" },
+  { id: "s2", title: "Broken Angel", artist: "Arash feat. Helena", reason: "The song that feels like her voice.", duration: "4:16", preset: "night", audio: "/songs/song2.mp3" },
+  { id: "s3", title: "Pehli Dafa", artist: "Atif Aslam", reason: "Because first meetings change everything.", duration: "4:15", preset: "dawn", audio: "/songs/song3.mp3" },
+  { id: "s4", title: "Kangna Tera Ni", artist: "Lashkare", reason: "Because she looks perfect in every rhythm.", duration: "3:50", preset: "bloom", audio: "/songs/song4.mp3" },
+  { id: "s5", title: "Despacito", artist: "Luis Fonsi ft. Daddy Yankee", reason: "For the days she dances without a care.", duration: "4:41", preset: "sea", audio: "/songs/song5.mp3" },
+  { id: "s6", title: "Labon Ko", artist: "K.K.", reason: "Because some songs are felt, not heard.", duration: "4:29", preset: "night", audio: "/songs/song6.mp3" },
+  { id: "s7", title: "Tujhe Main Pyar Karoon", artist: "Kailash Kher", reason: "Because loving her is the easiest thing.", duration: "4:19", preset: "meadow", audio: "/songs/song7.mp3" },
+  { id: "s8", title: "Tera Mera Hai Pyar Amar", artist: "Ahmed Jahanzeb", reason: "Because this love story deserves an OST.", duration: "3:45", preset: "bloom", audio: "/songs/song8.mp3" },
 ];
 
 export type Letter = { id: string; title: string; preview: string; body: string[]; signature: string };
 
 export const letters: Letter[] = [
   {
-    id: "lt1", title: "Dear Younger Me...", preview: "A little advice from her future self.",
+    id: "lt1", title: "Kabhi Kabhi Sochta Hoon...", preview: "Agar tum meri zindagi mein na aate, toh...",
     body: [
-      "You are allowed to take up space. The things that make you different are the things that will make you unforgettable.",
-      "Stop worrying so much about what everyone thinks — most of them are busy worrying about themselves. Be kinder to yourself; you are doing better than you know.",
+      "Kabhi kabhi sochta hoon... agar tum meri zindagi mein na aate, toh shayad mujhe kabhi pata hi na chalta ke kisi ki ek muskurahat bhi poora din khoobsurat bana sakti hai.",
+      "Tumhari har baat, har hasi, aur har choti si aadat dil ko sukoon deti hai.",
+      "Main sirf itna chahta hoon... jab bhi tumhari zindagi ki kahani likhi jaye, usmein meri jagah ek achhi yaad ki tarah hamesha rahe.",
     ],
-    signature: "with love, your future self",
+    signature: "ek hamesha ki yaad",
   },
   {
-    id: "lt2", title: "Dear Present Me...", preview: "You're doing better than you think.",
+    id: "lt2", title: "Dear Tum", preview: "Koi hai jo tumhari ek smile ke liye hazaar wajah dhoond lega.",
     body: [
-      "Look at you — carrying everything so gracefully. It's okay to rest. It's okay to not have it all figured out today.",
-      "Drink some water, step into the sunlight for a minute, and remember: an ordinary day spent smiling is not an ordinary day at all.",
+      "Main promises kam karta hoon... lekin ek baat zaroor keh sakta hoon.",
+      "Jab bhi tum muskuraogi, meri dua hogi ke woh muskurahat kabhi kam na ho.",
+      "Aur agar kabhi udaas ho jao... toh yaad rakhna, koi hai jo tumhari ek smile ke liye hazaar wajah dhoond lega.",
     ],
-    signature: "yours, always",
-  },
-  {
-    id: "lt3", title: "To The Girl I Admire...", preview: "Keep being you. The world needs it.",
-    body: [
-      "You laugh with your whole heart, you care without keeping score, and you make rooms warmer just by being in them.",
-      "Never shrink yourself to fit into places that weren't built for your kind of light.",
-    ],
-    signature: "someone who notices",
-  },
-  {
-    id: "lt4", title: "Things I Wish I Could Tell You...", preview: "Some things never got said out loud.",
-    body: [
-      "Some things never got said out loud. Maybe they didn't need to be — maybe you already felt them in the small moments.",
-      "But if words ever found their way: thank you. For every ordinary day you made feel like a memory worth keeping.",
-    ],
-    signature: "unsent, always",
-  },
-  {
-    id: "lt5", title: "One Day, When You Read This...", preview: "You'll smile. I promise.",
-    body: [
-      "I hope by now you've seen the places you dreamed about, and become everything your little heart whispered about at night.",
-      "And I hope someone, somewhere, still tells you stories about the girl who smiled at sunsets — because she was worth every story.",
-    ],
-    signature: "from the past, with hope",
+    signature: "always, for her",
   },
 ];
 

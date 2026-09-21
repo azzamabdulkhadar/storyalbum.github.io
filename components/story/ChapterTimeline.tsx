@@ -69,6 +69,8 @@ export default function ChapterTimeline({ items }: { items: Chapter[] }) {
               >
                 <div className={`md:w-1/2 ${left ? "md:pr-12" : "md:pl-12"}`}>
                   <GradientPhoto
+                    src={c.src}
+                    alt={c.title}
                     preset={c.preset}
                     caption={c.year}
                     className="aspect-[4/3] w-full transition-transform duration-700 hover:scale-[1.02]"

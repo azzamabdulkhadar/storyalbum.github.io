@@ -13,6 +13,8 @@ export default function CompareSlider({
   nowText,
   thenPreset,
   nowPreset,
+  thenSrc,
+  nowSrc,
 }: {
   thenLabel?: string;
   nowLabel?: string;
@@ -20,6 +22,8 @@ export default function CompareSlider({
   nowText: string;
   thenPreset: string;
   nowPreset: string;
+  thenSrc?: string;
+  nowSrc?: string;
 }) {
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
@@ -37,7 +41,7 @@ export default function CompareSlider({
     <div className="mx-auto max-w-3xl">
       <div
         ref={ref}
-        className="relative aspect-[4/3] select-none overflow-hidden rounded-3xl shadow-[var(--shadow-soft)] md:aspect-[16/9]"
+        className="relative aspect-[4/5] select-none overflow-hidden rounded-3xl shadow-[var(--shadow-soft)] touch-none md:aspect-[4/3]"
         onPointerDown={(e) => {
           dragging.current = true;
           (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
@@ -46,9 +50,10 @@ export default function CompareSlider({
         onPointerMove={(e) => dragging.current && setFromClientX(e.clientX)}
         onPointerUp={() => (dragging.current = false)}
         onPointerCancel={() => (dragging.current = false)}
+        onDragStart={(e) => e.preventDefault()}
       >
         {/* NOW (base layer) */}
-        <GradientPhoto preset={nowPreset} rounded="rounded-none" className="absolute inset-0 h-full w-full" />
+        <GradientPhoto src={nowSrc} preset={nowPreset} rounded="rounded-none" sizes="1200px" className="absolute inset-0 h-full w-full" />
         <div className="absolute bottom-4 right-4 text-right">
           <p className="font-hand text-2xl text-white">{nowLabel}</p>
           <p className="max-w-[180px] text-xs leading-snug text-white/85">{nowText}</p>
@@ -59,7 +64,7 @@ export default function CompareSlider({
           className="absolute inset-0"
           style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
         >
-          <GradientPhoto preset={thenPreset} rounded="rounded-none" className="h-full w-full" />
+          <GradientPhoto src={thenSrc} preset={thenPreset} rounded="rounded-none" sizes="1200px" className="h-full w-full" />
           <div className="absolute bottom-4 left-4">
             <p className="font-hand text-2xl text-white">{thenLabel}</p>
             <p className="max-w-[180px] text-xs leading-snug text-white/85">{thenText}</p>
